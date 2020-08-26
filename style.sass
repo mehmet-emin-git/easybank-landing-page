@@ -9,6 +9,7 @@ $grayish-blue: hsl(233, 8%, 62%)
 $light-grayish-blue: hsl(220, 16%, 96%)
 $very-light-gray: hsl(0, 0%, 98%)
 $white: hsl(0, 0%, 100%)
+$green: hsl(170, 80%, 42%)
 
 // media query mixin
 $mobile: 420px
@@ -58,7 +59,7 @@ body
   cursor: pointer
   transition: .2s ease-out  opacity
   &:hover
-    opacity: .8
+    opacity: .5
 
 ul
   padding: 0
@@ -132,6 +133,23 @@ header
     justify-content: space-between
 
   .nav__link
+    a
+      transition: .2s ease-out all
+      position: relative
+      &:hover
+        color: $dark-blue
+
+        &::after
+          content: ""
+          background: $gradient
+          position: absolute
+          top: 44px
+          left: 0
+          width: 100%
+          height: 4px
+
+
+
     +media_query($tablet)
       margin-top: 1.5rem
       a
@@ -322,6 +340,12 @@ main
       h4
         font-size: 1rem
         margin: .5rem 0 0
+        &:hover
+          color: $green
+          cursor: pointer
+
+
+
       p
         font-size: .8rem
         max-width: 94%
@@ -351,6 +375,12 @@ main
 .footer
   background: $dark-blue
   padding: 3rem 0 2rem 0
+
+  .social__link
+    transition: .2s ease-out all
+    .svg:hover
+      filter: invert(0.33) sepia(1) saturate(3.8) hue-rotate(115.2deg) brightness(0.54)
+
   .container
     justify-content: space-between
     align-items: flex-start
@@ -376,6 +406,7 @@ main
       .social
         padding: 3rem 0 0
         margin: 0
+
         &__link:not(:first-child)
           margin-left: .5rem
 
@@ -393,6 +424,11 @@ main
   &__links1, &__links2
     color: $white
     align-items: flex-start
+    a
+      transition: .2s ease-out color
+      &:hover
+        color: $bright-cyan
+
     a:not(:first-child)
       margin-top: 1rem
 
