@@ -10,6 +10,14 @@ $light-grayish-blue: hsl(220, 16%, 96%)
 $very-light-gray: hsl(0, 0%, 98%)
 $white: hsl(0, 0%, 100%)
 
+// media query mixin
+$mobile: 400px
+$tablet: 768px
+
+=media_query($view_port)
+  @media (max-width: $view_port)
+    @content
+
 //-------------------------- Global styles -------------------------
 
 *, *::before, *::after
@@ -43,7 +51,6 @@ body
   font-size: .9rem
   font-weight: 700
   color: $white
-  letter-spacing: .5px
   background: $gradient
   padding: .8rem 2.1rem
   border: none
@@ -86,20 +93,44 @@ h1,h2,h3,h4
 .grid
   margin-top: 4rem
   display: grid
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr))
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr))
   grid-gap: 1.5rem 2rem
+
+.burger__menu
+  display: none
+
+  +media_query($tablet)
+    display: inline-flex
 
 // ------------------------- Header styles ------------------------------
 header
   background: $white
   padding: .75rem 0
+
+  +media_query($tablet)
+        padding: 1.5rem 0
+
   .flex
     justify-content: space-between
+  
+  .nav
+    &__links
+      +media_query($tablet)
+        display: none
+        
+    &__btn
+      +media_query($tablet)
+        display: none
+
 
 // ---------------------------- Hero styles ------------------------------
 .hero
   position: relative
   overflow-x: hidden
+  +media_query($tablet)
+    .container
+      flex-direction: column-reverse
+
   &::before
     content: ""
     display: block
@@ -111,6 +142,13 @@ header
     height: 62rem
     z-index: -1
 
+    +media_query($tablet)
+      background: url("./images/bg-intro-mobile.svg") no-repeat left / cover
+      top: -31%
+      right: -4%
+      width: 54rem
+      height: 62rem
+
   &__text
     min-height: 30rem
     h1
@@ -120,21 +158,35 @@ header
     p
       margin-top: 1.5rem
       padding-right: 12rem
-      letter-spacing: .5px
-      line-height: 1.8rem
+
     .btn
       margin-top: .9rem
-
+    
+    +media_query($tablet)
+      min-height: 24rem
+      margin-top: 16rem
+      text-align: center
+      h1
+        font-size: 2.7rem
+        margin: 0 auto
+      p
+        padding: 0 8rem
+    
   &__image
     img
       max-width: 170%
       margin: -8rem 16rem 0 0
+      +media_query($tablet)
+        max-width: 100%
+        margin: -15rem 0
+
 
 // ---------------------------- Features styles ------------------------------
 .features
   background: $light-grayish-blue
   padding: 6rem 0
   margin-top: -10rem
+
 
   &__heading
     font-size: 2.5rem
@@ -147,12 +199,36 @@ header
     p
       font-size: 1rem
 
+  +media_query($tablet)
+    padding: 4rem 0
+    margin-top: -1rem
+    text-align: center
+
+    &__heading
+      font-size: 2rem
+      max-width: 12rem
+      margin: 0 auto
+    &__p
+      max-width: 60%
+      margin: 1.5rem auto 0
+
+    &__item
+      h3
+        font-size: 1.5rem
+      p
+        font-size: 1rem
+
 // ---------------------------- Article styles ------------------------------
 .article
   padding: 4rem 0
+
+ 
   &__heading
     font-size: 2.5rem
     margin-bottom: 0rem
+    +media_query($tablet)
+      text-align: center
+      font-size: 2rem
   
   &__cards
     margin-top: 3rem
@@ -195,8 +271,18 @@ header
     justify-content: space-between
     align-items: flex-start
 
+    +media_query($tablet)
+      flex-direction: column
+
   &__info
     text-align: left
+    +media_query($tablet)
+      width: 100%
+      flex-direction: column
+
+      & > div
+        width: 100%
+        align-items: center
 
     &-brand
       align-items: flex-start
@@ -207,6 +293,10 @@ header
         margin: 0
         &__link:not(:first-child)
           margin-left: .2rem
+        +media_query($tablet)
+          padding: 2rem 0 0
+
+
     
   &__links1, &__links2
     color: $white
@@ -216,11 +306,26 @@ header
 
   &__links1
     margin-left: 7.5rem
+
   &__links2
     margin-left: 8rem
 
+  +media_query($tablet)
+    &__links1, &__links2
+      margin: 1.1rem 0 0
+    &__links1
+        margin-top: 2.1rem
+    
+
   &__cta
     text-align: right
+
+    +media_query($tablet)
+      text-align: center
+      width: 100%
+      margin-top: 2.5rem
+
     .copyright
       font-size: .9rem
       padding-top: 1rem
+
