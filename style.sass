@@ -149,7 +149,7 @@ header
 
 // ---------------------------- Article styles ------------------------------
 .article
-  padding: 4rem 0 2rem 0
+  padding: 4rem 0
   &__heading
     font-size: 2.5rem
     margin-bottom: 0rem
@@ -159,7 +159,7 @@ header
     height: 50%
 
     .content
-      padding: 1.5rem 1.5rem
+      padding: 1.5rem 1.5rem 0 1.5rem
       small
         font-size: .6rem
         color: $grayish-blue
@@ -174,8 +174,7 @@ header
     &-single
       justify-content: flex-start
       background: $white
-      border-top-right-radius: 7px
-      border-top-left-radius: 7px
+      border-radius: 7px
       overflow: hidden
       box-shadow: 0px 2px 10px rgba(0,0,0,.05)
 
@@ -188,4 +187,40 @@ header
         .img-#{$i}
           background: url('./images/img-#{$i}.jpg') no-repeat center /cover
 
+// ---------------------------- Footer styles ------------------------------
+.footer
+  background: $dark-blue
+  padding: 3rem 0 2rem 0
+  .container
+    justify-content: space-between
+    align-items: flex-start
 
+  &__info
+    text-align: left
+
+    &-brand
+      align-items: flex-start
+      justify-content: center
+      
+      .social
+        padding: 3rem 0 0
+        margin: 0
+        &__link:not(:first-child)
+          margin-left: .2rem
+    
+  &__links1, &__links2
+    color: $white
+    align-items: flex-start
+    a:not(:first-child)
+      margin-top: 1rem
+
+  &__links1
+    margin-left: 7.5rem
+  &__links2
+    margin-left: 8rem
+
+  &__cta
+    text-align: right
+    .copyright
+      font-size: .9rem
+      padding-top: 1rem
