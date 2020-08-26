@@ -11,7 +11,7 @@ $very-light-gray: hsl(0, 0%, 98%)
 $white: hsl(0, 0%, 100%)
 
 // media query mixin
-$mobile: 400px
+$mobile: 420px
 $tablet: 768px
 
 =media_query($view_port)
@@ -69,9 +69,15 @@ ul
 
   li:not(:last-child)
     margin-right: 12px
+
+    +media_query($tablet)
+      margin-right: 0
   
   li:not(:first-child)
     margin-left: 12px
+
+    +media_query($tablet)
+      margin-left: 0
 
 a
   text-decoration: none
@@ -96,8 +102,15 @@ h1,h2,h3,h4
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr))
   grid-gap: 1.5rem 2rem
 
+#close-icon
+  display: none
+  &.show
+    display: inline-flex
+
 .burger__menu
   display: none
+  &.show
+    display: none
 
   +media_query($tablet)
     display: inline-flex
@@ -108,22 +121,68 @@ header
   padding: .75rem 0
 
   +media_query($tablet)
-        padding: 1.5rem 0
+    padding: 1.5rem 0
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    z-index: 10
 
   .flex
     justify-content: space-between
+
+  .nav__link
+    +media_query($tablet)
+      margin-top: 1.5rem
+      a
+        font-size: 1.3rem;
   
   .nav
+    position: relative
     &__links
       +media_query($tablet)
         display: none
-        
+        a:not(:first-child)
+          margin-top: 1.5rem
+      
+        &.show
+          display: flex
+          flex-direction: column
+          position: absolute
+          top: 3rem
+          left: 0
+          right: 0
+          background: white
+          padding: 2rem
+          border-radius: 7px
+          margin-left: auto 
+          margin-right: auto 
+          width: 325px
+          z-index: 10
+
+          // &::before
+          //   content: ""
+          //   background: linear-gradient(to bottom, rgba(black,.5), transparent)    
+          //   position: absolute
+          //   display: block
+          //   width: 100vw
+          //   height: 100vh
+          //   top: -1.4rem
+          //   left: -14rem
+          //   right: 0
+          //   bottom: 0
+          //   z-index: 0
+            
     &__btn
       +media_query($tablet)
         display: none
 
 
 // ---------------------------- Hero styles ------------------------------
+main
+  +media_query($tablet)
+    padding-top: 4rem;
+
 .hero
   position: relative
   overflow-x: hidden
@@ -149,6 +208,12 @@ header
       width: 54rem
       height: 62rem
 
+    +media_query($mobile)
+      top: -8%;
+      width: 28rem;
+      height: 26rem;
+    
+
   &__text
     min-height: 30rem
     h1
@@ -170,7 +235,15 @@ header
         font-size: 2.7rem
         margin: 0 auto
       p
-        padding: 0 8rem
+        padding: 0 20%
+
+    +media_query($mobile)
+      margin-top: 20rem
+      h1
+        font-size: 2.5rem
+      p
+        padding: 0 1.1rem
+        font-size: .9rem
     
   &__image
     img
@@ -179,6 +252,8 @@ header
       +media_query($tablet)
         max-width: 100%
         margin: -15rem 0
+      +media_query($mobile)
+        margin: -19rem 0
 
 
 // ---------------------------- Features styles ------------------------------
@@ -218,6 +293,11 @@ header
       p
         font-size: 1rem
 
+  +media_query($mobile)
+    &__p
+      max-width: 90%
+      font-size: 1rem
+
 // ---------------------------- Article styles ------------------------------
 .article
   padding: 4rem 0
@@ -246,6 +326,10 @@ header
         font-size: .8rem
         max-width: 94%
         line-height: 1.5em
+      
+      +media_query($mobile)
+        h4
+          max-width: 85%
 
     &-single
       justify-content: flex-start
@@ -276,6 +360,7 @@ header
 
   &__info
     text-align: left
+
     +media_query($tablet)
       width: 100%
       flex-direction: column
@@ -292,12 +377,19 @@ header
         padding: 3rem 0 0
         margin: 0
         &__link:not(:first-child)
-          margin-left: .2rem
+          margin-left: .5rem
+
         +media_query($tablet)
           padding: 2rem 0 0
+        +media_query($mobile)
+          &__link
+            img
+              width: 1.5rem
+              height: 1.5rem
 
+          &__link:not(:first-child)
+            margin-left: .8rem
 
-    
   &__links1, &__links2
     color: $white
     align-items: flex-start
