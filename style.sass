@@ -4,10 +4,13 @@
 $dark-blue: hsl(233, 26%, 24%)
 $lime-green: hsl(136, 65%, 51%)
 $bright-cyan: hsl(192, 70%, 51%)
+$gradient: linear-gradient(to right, $lime-green, $bright-cyan)
 $grayish-blue: hsl(233, 8%, 62%)
 $light-grayish-blue: hsl(220, 16%, 96%)
 $very-light-gray: hsl(0, 0%, 98%)
 $white: hsl(0, 0%, 100%)
+
+//-------------------------- Global styles -------------------------
 
 *, *::before, *::after
   box-sizing: border-box
@@ -19,3 +22,62 @@ body
   margin: 0
   font-size: 18px
   font-family: 'Public Sans', sans-serif
+  background: $very-light-gray
+
+.container
+  max-width: 1120px
+  margin: 0 auto
+
+.flex
+  display: flex
+  align-items: center
+  justify-content: center
+
+.flex-c
+  @extend .flex
+  flex-direction: column
+  
+.btn
+  font-family: 'Public Sans', sans-serif
+  font-weight: 700
+  color: $white
+  letter-spacing: .5px
+  background: $gradient
+  padding: .85rem 2.1rem
+  border: none
+  border-radius: 30px
+  cursor: pointer
+  transition: .2s ease-out  opacity
+  &:hover
+    opacity: .8
+
+ul
+  padding: 0
+  list-style-type: none
+  justify-content: space-between
+  padding: 0 .8rem
+  color: $grayish-blue
+
+  li:not(:last-child)
+    margin-right: 12px
+  
+  li:not(:first-child)
+    margin-left: 12px
+
+a
+  text-decoration: none
+  color: inherit
+  display: inline-block
+  font-size: .9rem
+
+p
+  line-height: 1.5rem
+  color: $grayish-blue
+
+// ------------------------- Header styles ------------------------------
+header
+  background: $white
+  padding: .8rem 0
+  .flex
+    justify-content: space-between
+
